@@ -1,0 +1,36 @@
+#include <Cstdio>
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+#include <iomanip>
+#include <vector>
+#include <string>
+
+#define ll long long
+
+using namespace std;
+
+int fib[30050];
+
+bool isfib (int pos) {
+	int * x; 
+	x = find(fib, fib + 25, pos);
+	if (x != fib + 25) return true;
+	return false;
+}
+
+int main() {
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
+	string s;
+   	fib[0] = 1;
+	fib[1] = 1;
+	for (int i = 2; i <= 25; ++i) {
+		fib[i] = fib[i - 1] + fib[i - 2];
+	}      
+	cin >> s;
+	for (int i = 0; i < s.size(); ++i) {
+		if (isfib(i + 1)) cout << s[i];
+	}
+	return 0;
+}
